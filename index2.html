@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resep Nasi Goreng</title>
+
+
+    <style>
+
+        /* ================= RESET ================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #fff5fa;
+            color: #222;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background: #111;
+            padding: 18px;
+            text-align: center;
+
+            box-shadow:
+                0 0 15px #ff1493;
+        }
+
+
+        nav button {
+            background: transparent;
+
+            color: white;
+
+            border:
+                2px solid #ff1493;
+
+            padding:
+                10px 18px;
+
+            margin: 5px;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        nav button:hover {
+            background: #ff1493;
+
+            box-shadow:
+                0 0 15px #ff69b4;
+
+            transform:
+                scale(1.05);
+        }
+
+
+        /* ================= HALAMAN ================= */
+
+        .halaman {
+            display: none;
+
+            padding:
+                40px 20px;
+
+            min-height: 80vh;
+        }
+
+
+        .halaman.aktif {
+            display: block;
+        }
+
+
+        h1 {
+            text-align: center;
+
+            color: #ff1493;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        /* ================= HALAMAN UTAMA ================= */
+
+        .utama {
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding:
+                60px 20px;
+
+            background: white;
+
+            border:
+                2px solid #ff1493;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 0 20px #ff69b4;
+        }
+
+
+        .utama h2 {
+            color: #ff1493;
+
+            font-size: 35px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .utama p {
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        /* ================= RESEP ================= */
+
+        .resep {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 30px;
+        }
+
+
+        .card {
+            background: white;
+
+            padding: 25px;
+
+            border:
+                2px solid #ff69b4;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 15px #ffb6d9;
+        }
+
+
+        /* ================= GAMBAR ================= */
+
+        .gambar-nasi {
+
+            width: 100%;
+
+            height: 330px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            border:
+                3px solid #ff1493;
+
+            transition:
+                0.4s;
+
+            cursor: zoom-in;
+        }
+
+
+        .gambar-nasi:hover {
+
+            transform:
+                scale(1.05);
+
+            box-shadow:
+                0 0 25px #ff1493;
+        }
+
+
+        /* ================= JUDUL RESEP ================= */
+
+        .nama-resep {
+
+            text-align: center;
+
+            margin:
+                20px 0;
+
+            font-size: 28px;
+
+            cursor: default;
+
+            user-select: none;
+
+            /*
+                WARNA BERUBAH
+                OTOMATIS
+            */
+
+            animation:
+                gantiWarna 6s infinite;
+
+            transition:
+                0.4s;
+        }
+
+
+        /*
+            SAAT DISENGGOL
+            / HOVER
+        */
+
+        .nama-resep:hover {
+
+            transform:
+                scale(1.15);
+
+            text-shadow:
+                0 0 10px currentColor,
+                0 0 20px currentColor,
+                0 0 30px currentColor;
+        }
+
+
+        /* ================= ANIMASI WARNA ================= */
+
+        @keyframes gantiWarna {
+
+            0% {
+
+                color: purple;
+
+                text-shadow:
+                    0 0 10px #d580ff;
+            }
+
+
+            16% {
+
+                color: #ff1493;
+
+                text-shadow:
+                    0 0 10px #ff69b4;
+            }
+
+
+            33% {
+
+                color: blue;
+
+                text-shadow:
+                    0 0 10px #66aaff;
+            }
+
+
+            50% {
+
+                color: green;
+
+                text-shadow:
+                    0 0 10px #66ff99;
+            }
+
+
+            66% {
+
+                color: orange;
+
+                text-shadow:
+                    0 0 10px #ffbb66;
+            }
+
+
+            83% {
+
+                color: red;
+
+                text-shadow:
+                    0 0 10px #ff7777;
+            }
+
+
+            100% {
+
+                color: purple;
+
+                text-shadow:
+                    0 0 10px #d580ff;
+            }
+
+        }
+
+
+        /* ================= BAHAN ================= */
+
+        .card h3 {
+
+            color:
+                #ff1493;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .card ul,
+        .card ol {
+
+            padding-left:
+                25px;
+
+            line-height:
+                2;
+        }
+
+
+        /* ================= TOMBOL ================= */
+
+        .btn {
+
+            background:
+                #ff1493;
+
+            color: white;
+
+            border: none;
+
+            padding:
+                13px 25px;
+
+            border-radius:
+                25px;
+
+            cursor: pointer;
+
+            font-size:
+                16px;
+
+            transition:
+                0.3s;
+        }
+
+
+        .btn:hover {
+
+            background:
+                #111;
+
+            transform:
+                scale(1.05);
+
+            box-shadow:
+                0 0 15px #ff1493;
+        }
+
+
+        /* ================= POPUP ZOOM ================= */
+
+        .zoom-gambar {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 9999;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(0, 0, 0, 0.85);
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding: 30px;
+        }
+
+
+        .zoom-gambar.aktif {
+
+            display: flex;
+        }
+
+
+        /* GAMBAR YANG DI-ZOOM */
+
+        .zoom-gambar img {
+
+            max-width:
+                90%;
+
+            max-height:
+                85vh;
+
+            object-fit:
+                contain;
+
+            border:
+                4px solid #ff1493;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 0 20px #ff1493,
+                0 0 40px #ff69b4;
+
+            animation:
+                zoomMasuk 0.35s ease;
+        }
+
+
+        /* ANIMASI ZOOM */
+
+        @keyframes zoomMasuk {
+
+            from {
+
+                transform:
+                    scale(0.5);
+
+                opacity: 0;
+            }
+
+
+            to {
+
+                transform:
+                    scale(1);
+
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ================= TOMBOL X ================= */
+
+        .tutup-zoom {
+
+            position:
+                absolute;
+
+            top: 20px;
+
+            right: 30px;
+
+            font-size:
+                45px;
+
+            color:
+                white;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.3s;
+        }
+
+
+        .tutup-zoom:hover {
+
+            color:
+                #ff1493;
+
+            transform:
+                scale(1.2);
+        }
+
+
+        /* ================= SURAT IZIN ================= */
+
+        .surat {
+
+            max-width:
+                800px;
+
+            margin:
+                auto;
+
+            background:
+                white;
+
+            padding:
+                40px;
+
+            border:
+                2px solid #ff1493;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 0 20px #ff69b4;
+
+            line-height:
+                1.8;
+        }
+
+
+        .surat h2 {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .ttd {
+
+            text-align:
+                right;
+
+            margin-top:
+                50px;
+        }
+
+
+        /* ================= KONTAK ================= */
+
+        .kontak {
+
+            max-width:
+                700px;
+
+            margin:
+                auto;
+        }
+
+
+        .anggota {
+
+            background:
+                white;
+
+            border:
+                2px solid #ff1493;
+
+            border-radius:
+                18px;
+
+            padding:
+                25px;
+
+            margin-bottom:
+                20px;
+
+            text-align:
+                center;
+
+            box-shadow:
+                0 0 15px #ffb6d9;
+        }
+
+
+        .anggota h3 {
+
+            color:
+                #ff1493;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .resep {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .gambar-nasi {
+
+                height:
+                    250px;
+            }
+
+
+            nav button {
+
+                font-size:
+                    12px;
+
+                padding:
+                    9px 12px;
+            }
+
+
+            .zoom-gambar img {
+
+                max-width:
+                    95%;
+
+                max-height:
+                    75vh;
+            }
+
+
+            .tutup-zoom {
+
+                top:
+                    10px;
+
+                right:
+                    20px;
+
+                font-size:
+                    38px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= MENU ================= -->
+
+    <nav>
+
+        <button
+            onclick="bukaHalaman('utama')">
+
+            🏠 Halaman Utama
+
+        </button>
+
+
+        <button
+            onclick="bukaHalaman('resep')">
+
+            🍳 Resep Makanan
+
+        </button>
+
+
+        <button
+            onclick="bukaHalaman('izin')">
+
+            📝 Surat Izin
+
+        </button>
+
+
+        <button
+            onclick="bukaHalaman('kontak')">
+
+            📞 Kontak Anggota
+
+        </button>
+
+    </nav>
+
+
+
+    <!-- ================= HALAMAN UTAMA ================= -->
+
+    <section
+        id="utama"
+        class="halaman aktif">
+
+
+        <div class="utama">
+
+            <h2>
+                🍚 Selamat Datang
+            </h2>
+
+
+            <p>
+
+                Selamat datang di website
+                resep makanan.
+
+                Temukan resep makanan
+                sederhana dan lezat
+                yang mudah dibuat di rumah.
+
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="bukaHalaman('resep')">
+
+                Lihat Resep 🍳
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= RESEP ================= -->
+
+    <section
+        id="resep"
+        class="halaman">
+
+
+        <h1>
+            🍳 Resep Makanan
+        </h1>
+
+
+        <div class="resep">
+
+
+            <!-- ================= KARTU NASI GORENG ================= -->
+
+            <div class="card">
+
+
+                <!-- GAMBAR DIKLIK UNTUK ZOOM -->
+
+                <img
+                    class="gambar-nasi"
+
+                    src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=80"
+
+                    alt="Nasi Goreng Spesial"
+
+                    onclick="zoomGambar(this.src)"
+                >
+
+
+                <!-- ================= JUDUL ================= -->
+
+                <!--
+                    TIDAK ADA ONCLICK
+
+                    WARNA AKAN BERUBAH
+                    OTOMATIS
+                -->
+
+                <h2
+                    id="judulNasi"
+                    class="nama-resep">
+
+                    Nasi Goreng Spesial
+
+                </h2>
+
+
+                <br>
+
+
+                <!-- TOMBOL PESAN -->
+
+                <button
+                    class="btn"
+                    onclick="pesanCookies()">
+
+                    🛒 Pesan
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ================= BAHAN ================= -->
+
+            <div class="card">
+
+
+                <h3>
+                    🥘 Bahan-Bahan
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        1 piring nasi putih
+                    </li>
+
+                    <li>
+                        2 siung bawang putih
+                    </li>
+
+                    <li>
+                        2 siung bawang merah
+                    </li>
+
+                    <li>
+                        1 butir telur
+                    </li>
+
+                    <li>
+                        2 sendok makan kecap manis
+                    </li>
+
+                    <li>
+                        1 sendok saus tiram
+                    </li>
+
+                    <li>
+                        Garam secukupnya
+                    </li>
+
+                    <li>
+                        Merica secukupnya
+                    </li>
+
+                    <li>
+                        Minyak goreng
+                    </li>
+
+                    <li>
+                        Daun bawang
+                    </li>
+
+                </ul>
+
+
+                <br>
+
+
+                <h3>
+                    👩‍🍳 Cara Membuat
+                </h3>
+
+
+                <ol>
+
+                    <li>
+                        Haluskan bawang merah
+                        dan bawang putih.
+                    </li>
+
+                    <li>
+                        Panaskan minyak.
+                    </li>
+
+                    <li>
+                        Tumis bumbu sampai harum.
+                    </li>
+
+                    <li>
+                        Masukkan telur
+                        lalu orak-arik.
+                    </li>
+
+                    <li>
+                        Masukkan nasi putih.
+                    </li>
+
+                    <li>
+                        Tambahkan kecap
+                        dan saus tiram.
+                    </li>
+
+                    <li>
+                        Tambahkan garam
+                        dan merica.
+                    </li>
+
+                    <li>
+                        Aduk sampai tercampur rata.
+                    </li>
+
+                    <li>
+                        Masukkan daun bawang.
+                    </li>
+
+                    <li>
+                        Nasi goreng siap disajikan.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= POPUP ZOOM ================= -->
+
+    <div
+        id="popupZoom"
+        class="zoom-gambar"
+        onclick="tutupZoom()">
+
+
+        <!-- TOMBOL X -->
+
+        <span
+            class="tutup-zoom"
+            onclick="tutupZoom()">
+
+            &times;
+
+        </span>
+
+
+        <!-- GAMBAR BESAR -->
+
+        <img
+            id="gambarZoom"
+
+            src=""
+
+            alt="Gambar Nasi Goreng"
+
+            onclick="event.stopPropagation()"
+        >
+
+    </div>
+
+
+
+    <!-- ================= SURAT IZIN ================= -->
+
+    <section
+        id="izin"
+        class="halaman">
+
+
+        <h1>
+            📝 Surat Izin
+        </h1>
+
+
+        <div class="surat">
+
+
+            <h2>
+                SURAT IZIN
+            </h2>
+
+
+            <p>
+
+                Kepada Yth.<br>
+
+                Bapak/Ibu Guru<br>
+
+                SMK TEXMACO SEMARANG
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+                Dengan hormat,
+            </p>
+
+
+            <p>
+
+                Saya yang bertanda tangan
+                di bawah ini:
+
+            </p>
+
+
+            <p>
+
+                Nama : Mira Bella <br>
+
+                Kelas : XI RPL<br>
+
+                Jurusan :
+                Rekayasa Perangkat Lunak
+
+            </p>
+
+
+            <p>
+
+                Dengan ini memohon izin
+                untuk tidak dapat mengikuti
+                kegiatan pembelajaran karena
+                ada keperluan yang tidak dapat
+                ditinggalkan.
+
+            </p>
+
+
+            <p>
+
+                Demikian surat izin ini saya
+                buat dengan sebenar-benarnya.
+                Atas perhatian dan izin yang
+                diberikan saya mengucapkan
+                terima kasih.
+
+            </p>
+
+
+            <div class="ttd">
+
+                <p>
+                    Hormat saya,
+                </p>
+
+
+                <br><br><br>
+
+
+                <b>
+                    Mira Bella 
+                </b>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= KONTAK ================= -->
+
+    <section
+        id="kontak"
+        class="halaman">
+
+
+        <h1>
+            📞 Kontak Anggota
+        </h1>
+
+
+        <div class="kontak">
+
+
+            <div class="anggota">
+
+                <h3>
+                    👩 Mira Bella 
+                </h3>
+
+                <p>
+                    Anggota 1
+                </p>
+
+                <p>
+                    📧 mira@gmail.com
+                </p>
+
+            </div>
+
+
+
+            <div class="anggota">
+
+                <h3>
+                    👨 Anggota 2
+                </h3>
+
+                <p>
+                    Anggota 2
+                </p>
+
+                <p>
+                    📧 bella@gmail.com
+                </p>
+
+            </div>
+
+
+
+            <div class="anggota">
+
+                <h3>
+                    👩 Anggota 2
+                </h3>
+
+                <p>
+                    Anggota 2
+                </p>
+
+                <p>
+                    📧 mirbel@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <div
+            style="text-align:center;">
+
+
+            <button
+                class="btn"
+                onclick="tampilkanNama()">
+
+                Lihat Nama Ketua
+
+            </button>
+
+
+            <p
+                id="namaAnggota"
+
+                style="
+                    margin-top:15px;
+                    font-weight:bold;
+                    color:#ff1493;
+                ">
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ================= PINDAH HALAMAN ================= */
+
+        function bukaHalaman(id) {
+
+
+            let halaman =
+                document.querySelectorAll(
+                    ".halaman"
+                );
+
+
+            halaman.forEach(
+                function(page) {
+
+                    page.classList.remove(
+                        "aktif"
+                    );
+
+                }
+            );
+
+
+            document
+                .getElementById(id)
+                .classList.add("aktif");
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+
+        /* ================= TOMBOL PESAN ================= */
+
+        function pesanCookies() {
+
+            alert(
+                "Akan segera hadir"
+            );
+
+        }
+
+
+
+        /* ================= LIHAT NAMA ================= */
+
+        function tampilkanNama() {
+
+            document
+                .getElementById(
+                    "namaAnggota"
+                )
+                .innerHTML =
+                    "Mira Bella ";
+
+        }
+
+
+
+        /* ================= ZOOM GAMBAR ================= */
+
+        function zoomGambar(src) {
+
+
+            let popup =
+                document.getElementById(
+                    "popupZoom"
+                );
+
+
+            let gambar =
+                document.getElementById(
+                    "gambarZoom"
+                );
+
+
+            gambar.src = src;
+
+
+            popup.classList.add(
+                "aktif"
+            );
+
+
+            /*
+                Agar halaman belakang
+                tidak bisa di-scroll
+            */
+
+            document.body.style.overflow =
+                "hidden";
+
+        }
+
+
+
+        /* ================= TUTUP ZOOM ================= */
+
+        function tutupZoom() {
+
+
+            let popup =
+                document.getElementById(
+                    "popupZoom"
+                );
+
+
+            popup.classList.remove(
+                "aktif"
+            );
+
+
+            document.body.style.overflow =
+                "auto";
+
+        }
+
+
+
+        /* ================= TOMBOL ESC ================= */
+
+        document.addEventListener(
+
+            "keydown",
+
+            function(event) {
+
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    tutupZoom();
+
+                }
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+
+</html>
