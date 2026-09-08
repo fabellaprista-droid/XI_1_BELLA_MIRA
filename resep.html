@@ -3,103 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resep Makanan</title>
+    <title>Resep Nasi Goreng Spesial</title>
 
-    <link rel="stylesheet" href="tampilan.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8ee;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        nav {
+            background-color: #d35400;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* TULISAN BERUBAH WARNA SAAT KURSOR DIARAHKAN */
+        nav ul li a:hover {
+            color: #ffeaa7;
+        }
+
+        /* HALAMAN UTAMA */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 8%;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 45px;
+            color: #d35400;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        /* TULISAN BERUBAH WARNA */
+        .hero-text h1:hover {
+            color: #e67e22;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .hero-text p:hover {
+            color: #d35400;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #d35400;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #a04000;
+        }
+
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-img img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease;
+        }
+
+        /* GAMBAR MEMBESAR SAAT KURSOR DIARAHKAN */
+        .hero-img img:hover {
+            transform: scale(1.1);
+        }
+
+        /* BAGIAN */
+        section {
+            padding: 70px 8%;
+        }
+
+        .judul {
+            text-align: center;
+            color: #d35400;
+            font-size: 32px;
+            margin-bottom: 35px;
+            transition: 0.3s;
+        }
+
+        .judul:hover {
+            color: #e67e22;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            color: #d35400;
+            margin-bottom: 15px;
+        }
+
+        .card h3:hover {
+            color: #e67e22;
+        }
+
+        .card p,
+        .card li {
+            line-height: 1.8;
+            transition: 0.3s;
+        }
+
+        .card p:hover,
+        .card li:hover {
+            color: #d35400;
+        }
+
+        .card ul,
+        .card ol {
+            padding-left: 25px;
+        }
+
+        .pesan {
+            text-align: center;
+            background-color: #ffeaa7;
+            border-radius: 15px;
+        }
+
+        footer {
+            background-color: #d35400;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- NAVBAR -->
     <nav>
-        <h2>🍴 ResepKu</h2>
+        <h2>🍳 ResepKu</h2>
 
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#resep">Resep</a></li>
-            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#cara">Cara Membuat</a></li>
+            <li><a href="#pesan">Pesan</a></li>
         </ul>
     </nav>
 
-
     <!-- HALAMAN UTAMA -->
-    <section id="home" class="home">
+    <section class="hero" id="home">
 
-        <div class="gambar">
-            <img src="gambar.jpg" alt="Gambar makanan">
+        <div class="hero-text">
+            <h1>Nasi Goreng Spesial</h1>
+
+            <p>
+                Nikmati nasi goreng spesial dengan cita rasa gurih,
+                aroma harum, dan topping yang menggugah selera.
+            </p>
+
+            <a href="#resep" class="btn">Lihat Resep</a>
         </div>
 
-        <div class="judul">
-            <h1>Resep Nasi Goreng</h1>
-            <p>Resep sederhana dan enak untuk dibuat di rumah.</p>
+        <div class="hero-img">
+            <!-- GANTI URL GAMBAR SESUAI KEBUTUHAN -->
+            <img
+                src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800"
+                alt="Nasi Goreng Spesial"
+            >
         </div>
 
     </section>
-
 
     <!-- RESEP -->
-    <section id="resep" class="resep">
+    <section id="resep">
 
-        <div class="box">
+        <h2 class="judul">Bahan-Bahan</h2>
 
-            <h2>Alat :</h2>
+        <div class="card">
+            <h3>Bahan Utama</h3>
 
             <ul>
-                <li>Wajan</li>
-                <li>Spatula</li>
-                <li>Piring</li>
-                <li>Sendok</li>
+                <li>2 piring nasi putih</li>
+                <li>2 butir telur</li>
+                <li>2 siung bawang putih</li>
+                <li>3 siung bawang merah</li>
+                <li>2 buah cabai merah</li>
+                <li>2 sendok makan kecap manis</li>
+                <li>1 sendok makan saus tiram</li>
+                <li>1 batang daun bawang</li>
+                <li>Garam secukupnya</li>
+                <li>Merica secukupnya</li>
+                <li>Minyak goreng secukupnya</li>
             </ul>
-
         </div>
 
-
-        <div class="box">
-
-            <h2>Bahan :</h2>
+        <div class="card">
+            <h3>Topping</h3>
 
             <ul>
-                <li>Nasi putih</li>
-                <li>Telur</li>
-                <li>Bawang merah</li>
-                <li>Bawang putih</li>
-                <li>Kecap</li>
-                <li>Garam secukupnya</li>
+                <li>Ayam suwir</li>
+                <li>Kerupuk</li>
+                <li>Timun dan tomat</li>
+                <li>Bawang goreng</li>
             </ul>
-
         </div>
 
     </section>
-
 
     <!-- CARA MEMBUAT -->
-    <section class="cara">
+    <section id="cara">
 
-        <h2>Cara Membuat :</h2>
+        <h2 class="judul">Cara Membuat</h2>
 
-        <ol>
-            <li>Siapkan semua alat dan bahan.</li>
-            <li>Panaskan sedikit minyak di wajan.</li>
-            <li>Masukkan telur lalu aduk sampai matang.</li>
-            <li>Masukkan bawang merah dan bawang putih.</li>
-            <li>Masukkan nasi putih dan aduk hingga rata.</li>
-            <li>Tambahkan kecap dan garam secukupnya.</li>
-            <li>Aduk sampai semua bahan tercampur rata.</li>
-            <li>Angkat dan sajikan di atas piring.</li>
-        </ol>
+        <div class="card">
+
+            <ol>
+                <li>Haluskan bawang merah, bawang putih, dan cabai.</li>
+                <li>Panaskan minyak di dalam wajan.</li>
+                <li>Tumis bumbu halus hingga harum.</li>
+                <li>Masukkan telur, lalu orak-arik hingga matang.</li>
+                <li>Masukkan ayam suwir dan daun bawang.</li>
+                <li>Tambahkan nasi putih, kecap manis, dan saus tiram.</li>
+                <li>Aduk hingga semua bahan tercampur rata.</li>
+                <li>Tambahkan garam dan merica secukupnya.</li>
+                <li>Masak hingga nasi harum dan matang.</li>
+                <li>Sajikan dengan topping sesuai selera.</li>
+            </ol>
+
+        </div>
 
     </section>
-
 
     <!-- PESAN -->
-    <section class="pesan">
+    <section id="pesan">
 
-        <button onclick="pesan()">Pesan</button>
+        <div class="card pesan">
+            <h2 class="judul">Pesan Sekarang!</h2>
+
+            <p>
+                Ingin menikmati nasi goreng spesial?
+                Hubungi kami untuk pemesanan.
+            </p>
+
+            <br>
+
+            <a href="https://wa.me/6281234567890" class="btn">
+                Pesan Sekarang
+            </a>
+        </div>
 
     </section>
 
-
-    <script src="script.js"></script>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 ResepKu - Nasi Goreng Spesial</p>
+    </footer>
 
 </body>
 </html>
